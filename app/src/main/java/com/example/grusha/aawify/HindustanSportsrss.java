@@ -114,7 +114,7 @@ public class HindustanSportsrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanSportsrss.this,android.R.layout.simple_expandable_list_item_1,titles9);
+            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanSportsrss.this,android.R.layout.simple_list_item_1,titles9);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

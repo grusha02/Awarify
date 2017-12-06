@@ -21,28 +21,28 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class TimesSportsrss extends AppCompatActivity {
+public class HindustanIndiarss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles3;
-    ArrayList<String> links3;
+    ArrayList<String> titles7;
+    ArrayList<String> links7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_times_sportsrss);
+        setContentView(R.layout.activity_hindustan_indiarss);
 
-        lv=(ListView) findViewById(R.id.listvw3);
-        titles3=new ArrayList<String>();
-        links3=new ArrayList<String>();
+        lv=(ListView) findViewById(R.id.listvw7);
+        titles7=new ArrayList<String>();
+        links7=new ArrayList<String>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links3.get(position));
+                Uri uri=Uri.parse(links7.get(position));
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
         });
-        new TimesSportsrss.ProcessInBackground().execute();
+        new HindustanIndiarss.ProcessInBackground().execute();
     }
 
     public InputStream getinputstream(URL url){
@@ -56,7 +56,7 @@ public class TimesSportsrss extends AppCompatActivity {
 
     public class ProcessInBackground extends AsyncTask<Integer,Integer, Exception> {
 
-        ProgressDialog progressDialog=new ProgressDialog(TimesSportsrss.this);
+        ProgressDialog progressDialog=new ProgressDialog(HindustanIndiarss.this);
         Exception exception;
         @Override
         protected void onPreExecute() {
@@ -68,7 +68,7 @@ public class TimesSportsrss extends AppCompatActivity {
         @Override
         protected Exception doInBackground(Integer... params) {
             try{
-                URL url=new URL("https://timesofindia.indiatimes.com/rssfeeds/4719148.cms");
+                URL url=new URL("http://www.hindustantimes.com/rss/india/rssfeed.xml");
                 XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);
                 XmlPullParser xpp=factory.newPullParser();
@@ -82,12 +82,12 @@ public class TimesSportsrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles3.add(xpp.nextText());
+                                titles7.add(xpp.nextText());
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links3.add(xpp.nextText());
+                                links7.add(xpp.nextText());
                             }
                         }
                     }
@@ -114,7 +114,7 @@ public class TimesSportsrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesSportsrss.this,android.R.layout.simple_list_item_1,titles3);
+            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanIndiarss.this,android.R.layout.simple_list_item_1,titles7);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

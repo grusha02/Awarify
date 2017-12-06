@@ -115,7 +115,7 @@ public class TimesBussrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesBussrss.this,android.R.layout.simple_expandable_list_item_1,titles);
+            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesBussrss.this,android.R.layout.simple_list_item_1,titles);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }
