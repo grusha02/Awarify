@@ -25,7 +25,20 @@
         <activity android:name=".TimesEntertainmentrss" />
         <activity android:name=".TimesSportsrss" />
         <activity android:name=".TimesTechrss" />
-        <activity android:name=".TimesEducationrss"></activity>
+        <activity android:name=".TimesEducationrss" />
+        <activity android:name=".category2" />
+        <activity android:name=".HindustanIndiarss" />
+        <activity android:name=".HindustanWorldrss" />
+        <activity android:name=".HindustanSportsrss" />
+        <activity android:name=".HindustanEntertainmentrss" />
+        <activity android:name=".HindustanHealthrss" />
+        <activity android:name=".HindustanEducationrss" />
+        <activity android:name=".HindustanBusinessrss" />
+        <activity android:name=".category3" />
+        <activity android:name=".indianationrss" />
+        <activity android:name=".indiaworldrss" />
+        <activity android:name=".indiahealth" />
+        <activity android:name=".indiasports"></activity>
     </application>
 
 </manifest>

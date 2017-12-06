@@ -32,6 +32,14 @@ public class papernameActivity extends AppCompatActivity {
                         Intent firstIntent = new Intent(papernameActivity.this, category1.class);
                         startActivity(firstIntent);
                         break;
+                    case 1:
+                        Intent secondIntent = new Intent(papernameActivity.this, category2.class);
+                        startActivity(secondIntent);
+                        break;
+                    case 2:
+                        Intent thirdIntent = new Intent(papernameActivity.this, category3.class);
+                        startActivity(thirdIntent);
+                        break;
                 }
             }
         });
