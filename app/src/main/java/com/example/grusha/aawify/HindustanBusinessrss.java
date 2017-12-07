@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class HindustanBusinessrss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles13;
-    ArrayList<String> links13;
+    ArrayList<Names> titles13;
+    ArrayList<Names> links13;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hindustan_businessrss);
 
         lv=(ListView) findViewById(R.id.listvw13);
-        titles13=new ArrayList<String>();
-        links13=new ArrayList<String>();
+        titles13=new ArrayList<Names>();
+        links13=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links13.get(position));
+                Uri uri=Uri.parse(links13.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class HindustanBusinessrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles13.add(xpp.nextText());
+                                Names u=new Names(xpp.nextText());
+                                titles13.add(u);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links13.add(xpp.nextText());
+                                Names p=new Names(xpp.nextText());
+                                links13.add(p);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class HindustanBusinessrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanBusinessrss.this,android.R.layout.simple_list_item_1,titles13);
+            NamesAdapter adapt=new NamesAdapter(HindustanBusinessrss.this,titles13);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

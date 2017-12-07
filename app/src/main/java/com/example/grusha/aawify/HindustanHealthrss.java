@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class HindustanHealthrss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles11;
-    ArrayList<String> links11;
+    ArrayList<Names> titles11;
+    ArrayList<Names> links11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hindustan_healthrss);
 
         lv=(ListView) findViewById(R.id.listvw11);
-        titles11=new ArrayList<String>();
-        links11=new ArrayList<String>();
+        titles11=new ArrayList<Names>();
+        links11=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links11.get(position));
+                Uri uri=Uri.parse(links11.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class HindustanHealthrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles11.add(xpp.nextText());
+                                Names u=new Names(xpp.nextText());
+                                titles11.add(u);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links11.add(xpp.nextText());
+                                Names j=new Names(xpp.nextText());
+                                links11.add(j);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class HindustanHealthrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanHealthrss.this,android.R.layout.simple_list_item_1,titles11);
+            NamesAdapter adapt=new NamesAdapter(HindustanHealthrss.this,titles11);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }
