@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class HindustanIndiarss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles7;
-    ArrayList<String> links7;
+    ArrayList<Names> titles7;
+    ArrayList<Names> links7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hindustan_indiarss);
 
         lv=(ListView) findViewById(R.id.listvw7);
-        titles7=new ArrayList<String>();
-        links7=new ArrayList<String>();
+        titles7=new ArrayList<Names>();
+        links7=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links7.get(position));
+                Uri uri=Uri.parse(links7.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class HindustanIndiarss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles7.add(xpp.nextText());
+                                Names n=new Names(xpp.nextText());
+                                titles7.add(n);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links7.add(xpp.nextText());
+                                Names m=new Names(xpp.nextText());
+                                links7.add(m);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class HindustanIndiarss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(HindustanIndiarss.this,android.R.layout.simple_list_item_1,titles7);
+            NamesAdapter adapt=new NamesAdapter(HindustanIndiarss.this,titles7);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

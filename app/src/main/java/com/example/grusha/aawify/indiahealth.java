@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class indiahealth extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles16;
-    ArrayList<String> links16;
+    ArrayList<Names> titles16;
+    ArrayList<Names> links16;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indiaeconomy);
 
         lv=(ListView) findViewById(R.id.listvw16);
-        titles16=new ArrayList<String>();
-        links16=new ArrayList<String>();
+        titles16=new ArrayList<Names>();
+        links16=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links16.get(position));
+                Uri uri=Uri.parse(links16.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class indiahealth extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles16.add(xpp.nextText());
+                                Names n=new Names(xpp.nextText());
+                                titles16.add(n);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links16.add(xpp.nextText());
+                                Names m=new Names(xpp.nextText());
+                                links16.add(m);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class indiahealth extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(indiahealth.this,android.R.layout.simple_list_item_1,titles16);
+            NamesAdapter adapt=new NamesAdapter(indiahealth.this,titles16);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

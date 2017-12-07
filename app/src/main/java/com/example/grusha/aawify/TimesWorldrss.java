@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class TimesWorldrss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles5;
-    ArrayList<String> links5;
+    ArrayList<Names> titles5;
+    ArrayList<Names> links5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times_worldrss);
 
         lv=(ListView) findViewById(R.id.listvw1);
-        titles5=new ArrayList<String>();
-        links5=new ArrayList<String>();
+        titles5=new ArrayList<Names>();
+        links5=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links5.get(position));
+                Uri uri=Uri.parse(links5.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class TimesWorldrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles5.add(xpp.nextText());
+                                Names f=new Names(xpp.nextText());
+                                titles5.add(f);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links5.add(xpp.nextText());
+                                Names h=new Names(xpp.nextText());
+                                links5.add(h);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class TimesWorldrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesWorldrss.this,android.R.layout.simple_list_item_1,titles5);
+            NamesAdapter adapt=new NamesAdapter(TimesWorldrss.this,titles5);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

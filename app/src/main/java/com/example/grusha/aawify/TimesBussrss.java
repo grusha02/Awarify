@@ -25,20 +25,20 @@ import java.util.List;
 public class TimesBussrss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles;
-    ArrayList<String> links;
+    ArrayList<Names> titles;
+    ArrayList<Names> links;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times_bussrss);
 
         lv=(ListView) findViewById(R.id.listvw);
-        titles=new ArrayList<String>();
-        links=new ArrayList<String>();
+        titles=new ArrayList<Names>();
+        links=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 Uri uri=Uri.parse(links.get(position));
+                 Uri uri=Uri.parse(links.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -83,12 +83,14 @@ public class TimesBussrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                 titles.add(xpp.nextText());
+                                 Names d=new Names(xpp.nextText());
+                                 titles.add(d);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links.add(xpp.nextText());
+                                Names c=new Names(xpp.nextText());
+                                links.add(c);
                             }
                         }
                     }
@@ -115,7 +117,7 @@ public class TimesBussrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesBussrss.this,android.R.layout.simple_list_item_1,titles);
+            NamesAdapter adapt=new NamesAdapter(TimesBussrss.this,titles);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }

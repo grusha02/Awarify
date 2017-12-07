@@ -10,4 +10,5 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     tools:context="com.example.grusha.aawify.category1"
+    android:divider="@null"
     />

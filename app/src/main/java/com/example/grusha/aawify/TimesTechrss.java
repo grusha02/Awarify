@@ -24,20 +24,20 @@ import java.util.ArrayList;
 public class TimesTechrss extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> titles4;
-    ArrayList<String> links4;
+    ArrayList<Names> titles4;
+    ArrayList<Names> links4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times_techrss);
 
         lv=(ListView) findViewById(R.id.listvw4);
-        titles4=new ArrayList<String>();
-        links4=new ArrayList<String>();
+        titles4=new ArrayList<Names>();
+        links4=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri=Uri.parse(links4.get(position));
+                Uri uri=Uri.parse(links4.get(position).getname());
                 Intent i=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
             }
@@ -82,12 +82,14 @@ public class TimesTechrss extends AppCompatActivity {
                         }
                         else if(xpp.getName().equalsIgnoreCase("title")){
                             if(insideitem){
-                                titles4.add(xpp.nextText());
+                                Names k=new Names(xpp.nextText());
+                                titles4.add(k);
                             }
                         }
                         else if(xpp.getName().equalsIgnoreCase("link")){
                             if(insideitem){
-                                links4.add(xpp.nextText());
+                                Names o=new Names(xpp.nextText());
+                                links4.add(o);
                             }
                         }
                     }
@@ -114,7 +116,7 @@ public class TimesTechrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapt=new ArrayAdapter<String>(TimesTechrss.this,android.R.layout.simple_list_item_1,titles4);
+            NamesAdapter adapt=new NamesAdapter(TimesTechrss.this,titles4);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }
