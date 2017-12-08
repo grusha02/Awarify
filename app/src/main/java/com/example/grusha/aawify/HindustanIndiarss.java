@@ -29,6 +29,7 @@ public class HindustanIndiarss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("India");
         setContentView(R.layout.activity_hindustan_indiarss);
 
         lv=(ListView) findViewById(R.id.listvw7);

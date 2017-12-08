@@ -30,6 +30,7 @@ public class TimesBussrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Business");
         setContentView(R.layout.activity_times_bussrss);
 
         lv=(ListView) findViewById(R.id.listvw);

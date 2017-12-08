@@ -29,6 +29,7 @@ public class HindustanWorldrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("World");
         setContentView(R.layout.activity_hindustan_worldrss);
 
         lv=(ListView) findViewById(R.id.listvw8);

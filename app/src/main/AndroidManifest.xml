@@ -38,7 +38,8 @@
         <activity android:name=".indianationrss" />
         <activity android:name=".indiaworldrss" />
         <activity android:name=".indiahealth" />
-        <activity android:name=".indiasports"></activity>
+        <activity android:name=".indiasports" />
+        <activity android:name=".map1"></activity>
     </application>
 
 </manifest>

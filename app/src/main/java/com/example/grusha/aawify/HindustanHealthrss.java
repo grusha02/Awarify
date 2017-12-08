@@ -29,6 +29,7 @@ public class HindustanHealthrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Health");
         setContentView(R.layout.activity_hindustan_healthrss);
 
         lv=(ListView) findViewById(R.id.listvw11);

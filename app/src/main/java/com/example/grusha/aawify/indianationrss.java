@@ -29,6 +29,7 @@ public class indianationrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Nation");
         setContentView(R.layout.activity_indianationrss);
 
         lv=(ListView) findViewById(R.id.listvw14);

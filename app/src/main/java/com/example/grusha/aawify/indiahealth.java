@@ -29,6 +29,7 @@ public class indiahealth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Health");
         setContentView(R.layout.activity_indiaeconomy);
 
         lv=(ListView) findViewById(R.id.listvw16);

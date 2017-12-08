@@ -29,6 +29,7 @@ public class HindustanEducationrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Education");
         setContentView(R.layout.activity_hindustan_educationrss);
 
         lv=(ListView) findViewById(R.id.listvw12);

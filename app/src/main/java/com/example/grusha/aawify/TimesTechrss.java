@@ -29,6 +29,7 @@ public class TimesTechrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Technology");
         setContentView(R.layout.activity_times_techrss);
 
         lv=(ListView) findViewById(R.id.listvw4);

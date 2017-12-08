@@ -29,6 +29,7 @@ public class HindustanSportsrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Sports");
         setContentView(R.layout.activity_hindustan_sportsrss);
 
         lv=(ListView) findViewById(R.id.listvw9);

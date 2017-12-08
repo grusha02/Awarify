@@ -29,6 +29,7 @@ public class TimesEntertainmentrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Entertainment");
         setContentView(R.layout.activity_times_entertainmentrss);
 
         lv=(ListView) findViewById(R.id.listvw2);

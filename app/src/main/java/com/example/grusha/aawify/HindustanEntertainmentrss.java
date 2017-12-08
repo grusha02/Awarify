@@ -28,6 +28,7 @@ public class HindustanEntertainmentrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Entertainment");
         setContentView(R.layout.activity_hindustan_entertainmentrss);
 
         lv=(ListView) findViewById(R.id.listvw10);

@@ -29,6 +29,7 @@ public class indiasports extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Sports");
         setContentView(R.layout.activity_indiasports);
 
         lv=(ListView) findViewById(R.id.listvw17);

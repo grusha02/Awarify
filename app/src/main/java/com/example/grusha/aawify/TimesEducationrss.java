@@ -29,6 +29,7 @@ public class TimesEducationrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Education");
         setContentView(R.layout.activity_times_educationrss);
 
         lv=(ListView) findViewById(R.id.listvw6);

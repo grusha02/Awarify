@@ -15,6 +15,7 @@ public class category1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Times Of India");
         setContentView(R.layout.activity_category1);
         ArrayList<Names> names1=new ArrayList<Names>();
         names1.add(new Names("Business"));

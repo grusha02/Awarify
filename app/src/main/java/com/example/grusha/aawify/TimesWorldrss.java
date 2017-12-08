@@ -29,6 +29,7 @@ public class TimesWorldrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("World");
         setContentView(R.layout.activity_times_worldrss);
 
         lv=(ListView) findViewById(R.id.listvw1);

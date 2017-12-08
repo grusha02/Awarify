@@ -29,6 +29,7 @@ public class HindustanBusinessrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Business");
         setContentView(R.layout.activity_hindustan_businessrss);
 
         lv=(ListView) findViewById(R.id.listvw13);

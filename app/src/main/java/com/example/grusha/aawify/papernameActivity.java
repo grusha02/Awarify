@@ -15,6 +15,7 @@ public class papernameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Papers");
         setContentView(R.layout.activity_papername);
 
         ArrayList<Names> names = new ArrayList<Names>();
