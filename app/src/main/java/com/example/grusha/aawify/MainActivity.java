@@ -16,8 +16,5 @@ public class MainActivity extends AppCompatActivity {
         Intent i=new Intent(this,papernameActivity.class);
         startActivity(i);
     }
-    public void movetomap(View view){
-        Intent u=new Intent(this,map1.class);
-        startActivity(u);
-    }
+
 }

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.grusha.aawify.TimesBussrss"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/draw">
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/draw1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/drawermenu"
+        app:headerLayout="@layout/header"
+        android:layout_gravity="start"/>
 
 
     <ListView
@@ -13,4 +22,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"/>
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

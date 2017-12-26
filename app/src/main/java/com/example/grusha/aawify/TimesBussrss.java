@@ -1,11 +1,20 @@
 package com.example.grusha.aawify;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,9 +31,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.toggle;
+
 public class TimesBussrss extends AppCompatActivity {
 
+    public ActionBarDrawerToggle mt;
+    public DrawerLayout m;
+
     ListView lv;
+    ArrayList<String> allinks=new ArrayList<String>();
     ArrayList<Names> titles;
     ArrayList<Names> links;
     @Override
@@ -32,8 +47,25 @@ public class TimesBussrss extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Business");
         setContentView(R.layout.activity_times_bussrss);
+        m=(DrawerLayout)findViewById(R.id.draw);
+        mt=new ActionBarDrawerToggle(this,m,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        m.addDrawerListener(mt);
+        mt.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.draw);
+         toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();*/
+
 
         lv=(ListView) findViewById(R.id.listvw);
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/296589292.cms");
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/5880659.cms");
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/4719148.cms");
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms");
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/913168846.cms");
+        allinks.add("https://timesofindia.indiatimes.com/rssfeeds/1898055.cms");
         titles=new ArrayList<Names>();
         links=new ArrayList<Names>();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,6 +77,15 @@ public class TimesBussrss extends AppCompatActivity {
             }
         });
         new ProcessInBackground().execute();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(mt.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public InputStream getinputstream(URL url){
@@ -70,7 +111,8 @@ public class TimesBussrss extends AppCompatActivity {
         @Override
         protected Exception doInBackground(Integer... params) {
             try{
-               URL url=new URL("https://timesofindia.indiatimes.com/rssfeeds/1898055.cms");
+                for(String s:allinks){
+               URL url=new URL(s);
                 XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);
                 XmlPullParser xpp=factory.newPullParser();
@@ -98,7 +140,7 @@ public class TimesBussrss extends AppCompatActivity {
                     else if(event==XmlPullParser.END_TAG&&xpp.getName().equalsIgnoreCase("item")){
                         insideitem=false;
                     }
-                    event=xpp.next();
+                    event=xpp.next();}
                 }
             }
             catch (MalformedURLException e){
@@ -123,4 +165,37 @@ public class TimesBussrss extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       // getMenuInflater().inflate(R.menu.settings_menu,menu);
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.search_menu,menu);
+
+        SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchview=(SearchView) menu.findItem(R.id.search).getActionView();
+        searchview.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<Names> m=new ArrayList<Names>();
+                if(newText.length()!=0){
+                    for(Names n:titles){
+                        if(n.getname().toUpperCase().contains(newText.toUpperCase())){
+                            m.add(n);
+                        }
+                    }
+                    lv.setAdapter(new NamesAdapter(TimesBussrss.this,m));
+                }
+
+                return true;
+            }
+        });
+        return true;
+    }
+
 }

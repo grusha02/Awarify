@@ -21,18 +21,6 @@
         android:text="East"
         android:textColor="@color/white"
         android:textSize="25sp"/>
-    <Button
-        android:id="@+id/maps"
-        android:background="@color/offwhite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-160dp"
-        android:text="Map"
-        android:textSize="20sp"
-        android:padding="15dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:onClick="movetomap"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

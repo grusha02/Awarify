@@ -67,7 +67,7 @@ public class TimesEducationrss extends AppCompatActivity {
         }
 
         @Override
-        protected Exception doInBackground(Integer... params) {
+        protected  Exception doInBackground(Integer... params) {
             try{
                 URL url=new URL("https://timesofindia.indiatimes.com/rssfeeds/913168846.cms");
                 XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
