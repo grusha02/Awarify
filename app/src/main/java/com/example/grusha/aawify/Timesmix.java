@@ -17,7 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -29,14 +28,12 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
-import static android.R.id.toggle;
-
-public class TimesBussrss extends AppCompatActivity {
+public class Timesmix extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     public ActionBarDrawerToggle mt;
     public DrawerLayout m;
+    public NavigationView navigationView;
 
     ListView lv;
     ArrayList<String> allinks=new ArrayList<String>();
@@ -45,13 +42,16 @@ public class TimesBussrss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Business");
+        getSupportActionBar().setTitle("Times Of India");
         setContentView(R.layout.activity_times_bussrss);
         m=(DrawerLayout)findViewById(R.id.draw);
         mt=new ActionBarDrawerToggle(this,m,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         m.addDrawerListener(mt);
         mt.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = (NavigationView) findViewById(R.id.draw1);
+        navigationView.setNavigationItemSelectedListener(Timesmix.this);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.draw);
          toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -81,6 +81,32 @@ public class TimesBussrss extends AppCompatActivity {
 
 
     @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id =item.getItemId();
+            if(id== R.id.buss){
+                Intent l=new Intent(this,Timesbuss.class);
+                startActivity(l);}
+
+            else if(id==R.id.world){
+                Intent i=new Intent(this,TimesWorldrss.class);
+                startActivity(i);}
+            else if(id==R.id.tech){
+                Intent t=new Intent(this,TimesTechrss.class);
+                startActivity(t);}
+            else if(id==R.id.education){
+                Intent j=new Intent(this,TimesEducationrss.class);
+                startActivity(j);}
+            else if(id== R.id.entertainment){
+                Intent u=new Intent(this,TimesEntertainmentrss.class);
+                startActivity(u);}
+            else{
+                Intent x=new Intent(this,TimesSportsrss.class);
+                startActivity(x);}
+       // m.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(mt.onOptionsItemSelected(item)){
             return true;
@@ -99,7 +125,7 @@ public class TimesBussrss extends AppCompatActivity {
 
     public class ProcessInBackground extends AsyncTask<Integer,Integer, Exception>{
 
-        ProgressDialog progressDialog=new ProgressDialog(TimesBussrss.this);
+        ProgressDialog progressDialog=new ProgressDialog(Timesmix.this);
         Exception exception;
         @Override
         protected void onPreExecute() {
@@ -160,7 +186,7 @@ public class TimesBussrss extends AppCompatActivity {
         @Override
         protected void onPostExecute(Exception s) {
             super.onPostExecute(s);
-            NamesAdapter adapt=new NamesAdapter(TimesBussrss.this,titles);
+            NamesAdapter adapt=new NamesAdapter(Timesmix.this,titles);
             lv.setAdapter(adapt);
             progressDialog.dismiss();
         }
@@ -189,7 +215,7 @@ public class TimesBussrss extends AppCompatActivity {
                             m.add(n);
                         }
                     }
-                    lv.setAdapter(new NamesAdapter(TimesBussrss.this,m));
+                    lv.setAdapter(new NamesAdapter(Timesmix.this,m));
                 }
 
                 return true;
@@ -197,5 +223,6 @@ public class TimesBussrss extends AppCompatActivity {
         });
         return true;
     }
+
 
 }

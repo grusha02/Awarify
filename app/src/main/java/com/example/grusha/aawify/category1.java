@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class category1 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        Intent i=new Intent(category1.this,TimesBussrss.class);
+                        Intent i=new Intent(category1.this,Timesmix.class);
                         startActivity(i);
                         break;
                     case 1:

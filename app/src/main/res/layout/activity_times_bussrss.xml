@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.grusha.aawify.TimesBussrss"
+    tools:context="com.example.grusha.aawify.Timesmix"
     android:orientation="vertical"
-    android:id="@+id/draw">
+    android:id="@+id/draw"
+    tools:openDrawer="start">
+    <include
+        layout="@layout/content_timesmix"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/draw1"
@@ -14,12 +19,8 @@
         android:layout_height="match_parent"
         app:menu="@menu/drawermenu"
         app:headerLayout="@layout/header"
-        android:layout_gravity="start"/>
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start" />
 
 
-    <ListView
-        android:id="@+id/listvw"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"/>
 </android.support.v4.widget.DrawerLayout>

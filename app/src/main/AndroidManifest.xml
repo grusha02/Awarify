@@ -25,10 +25,10 @@
 
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"></meta-data>
+                android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".category1" />
-        <activity android:name=".TimesBussrss" />
+        <activity android:name=".Timesmix" />
         <activity android:name=".TimesWorldrss" />
         <activity android:name=".TimesEntertainmentrss" />
         <activity android:name=".TimesSportsrss" />
@@ -47,7 +47,10 @@
         <activity android:name=".indiaworldrss" />
         <activity android:name=".indiahealth" />
         <activity android:name=".indiasports" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Hindustanmix" />
+        <activity android:name=".Indiamix" />
+        <activity android:name=".Timesbuss"></activity>
     </application>
 
 </manifest>
