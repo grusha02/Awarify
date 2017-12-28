@@ -8,4 +8,11 @@
 
     <string name="action_settings">Settings</string>
 
+    <string-array name="lists">
+        <item>Delhi</item>
+        <item>Mumbai</item>
+        <item>Bangalore</item>
+        <item>Hyderabad</item>
+    </string-array>
+
 </resources>

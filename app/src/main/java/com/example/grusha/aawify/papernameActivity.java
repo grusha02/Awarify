@@ -1,34 +1,30 @@
 package com.example.grusha.aawify;
 
-import android.app.SearchManager;
-import android.content.Context;
+
 import android.content.Intent;
+import android.preference.PreferenceFragment;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class papernameActivity extends AppCompatActivity {
     public NamesAdapter adapt;
     public ArrayList<Names> names;
     public ListView list;
+    public static String c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +55,16 @@ public class papernameActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
         Intent intent=new Intent(papernameActivity.this,Settings.class);
-        startActivity(intent);
+        startActivityForResult(intent,1);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1&&resultCode==RESULT_OK){
+            c=data.getStringExtra("Data");
+        }
     }
 }
 
