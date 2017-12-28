@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/drawhind"
-        app:headerLayout="@layout/header"
+        app:headerLayout="@layout/header1"
         android:fitsSystemWindows="true"
         android:layout_gravity="start" />
 

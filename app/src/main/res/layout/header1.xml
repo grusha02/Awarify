@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="165dp"
-        android:src="@drawable/toi"
+        android:src="@drawable/hind"
         android:scaleType="fitXY"/>
 
 </LinearLayout>
