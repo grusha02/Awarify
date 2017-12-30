@@ -24,7 +24,6 @@ public class papernameActivity extends AppCompatActivity {
     public NamesAdapter adapt;
     public ArrayList<Names> names;
     public ListView list;
-    public static String c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +47,10 @@ public class papernameActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+    }
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.settings_menu,menu);
         return true;
@@ -55,16 +58,16 @@ public class papernameActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
         Intent intent=new Intent(papernameActivity.this,Settings.class);
-        startActivityForResult(intent,1);
+        startActivity(intent);
         return true;
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1&&resultCode==RESULT_OK){
             c=data.getStringExtra("Data");
         }
-    }
+    }*/
 }
 

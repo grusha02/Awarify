@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/buss"
+    android:title="Bussiness"
+    />
+
+<item
+    android:id="@+id/world"
+    android:title="World"
+   />
+    <item
+        android:id="@+id/education"
+        android:title="Education"
+       />
+    <item
+        android:id="@+id/tech"
+        android:title="Technology"
+        />
+    <item
+        android:id="@+id/sports"
+        android:title="Sports"
+        />
+    <item
+        android:id="@+id/entertainment"
+        android:title="Entertainment"
+        />
+
+</menu>

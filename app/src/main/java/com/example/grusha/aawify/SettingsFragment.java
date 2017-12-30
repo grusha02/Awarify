@@ -8,8 +8,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,9 @@ public class SettingsFragment extends Fragment {
     ArrayList<Names> titles1;
     ArrayList<Names> links1;
     SharedPreferences shared;
+    String t;
+    String state;
+    URL url;
 
 
     public SettingsFragment() {
@@ -68,9 +73,109 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        SharedPreferences pref = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+        state = pref.getString(getString(R.string.list_key),getString(R.string.Delhi));
+        switch (state){
+            case "Mumbai":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128838597.cms";
+                break;
+
+            case "Delhi":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms";
+                break;
+
+            case "Bangalore":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128833038.cms";
+                break;
+            case "Hyderabad":
+                Toast.makeText(getActivity(), state,Toast.LENGTH_SHORT).show();
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128816011.cms";
+                break;
+            case "Chennai":
+                t="https://timesofindia.indiatimes.com/rssfeeds/2950623.cms";
+                break;
+            case "Ahemdabad":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128821153.cms";
+                break;
+            case "Allahabad":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3947060.cms";
+                break;
+            case "Bhubaneswar":
+                t="https://timesofindia.indiatimes.com/rssfeeds/4118235.cms";
+                break;
+            case "Coimbatore":
+                t="https://timesofindia.indiatimes.com/rssfeeds/7503091.cms";
+                break;
+            case "Gurgaon":
+                t="https://timesofindia.indiatimes.com/rssfeeds/6547154.cms";
+                break;
+            case "Guwahati":
+                t="https://timesofindia.indiatimes.com/rssfeeds/4118215.cms";
+                break;
+            case "Hubli":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942695.cms";
+                break;
+            case "Kanpur":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3947067.cms";
+                break;
+            case "Kolkata":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128830821.cms";
+                break;
+            case "Ludhiana":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3947051.cms";
+                break;
+            case "Mangalore":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942690.cms";
+                break;
+            case "Mysore":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942693.cms";
+                break;
+            case "Noida":
+                t="https://timesofindia.indiatimes.com/rssfeeds/8021716.cms";
+                break;
+            case "Pune":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128821991.cms";
+                break;
+            case "Goa":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3012535.cms";
+                break;
+            case "Chandigarh":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128816762.cms";
+                break;
+            case "Lucknow":
+                t="https://timesofindia.indiatimes.com/rss.cms";
+                break;
+            case "Patna":
+                t="https://timesofindia.indiatimes.com/rssfeeds/-2128817995.cms";
+                break;
+            case "Jaipur":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3012544.cms";
+                break;
+            case "Nagpur":
+                t="https://timesofindia.indiatimes.com/rssfeeds/442002.cms";
+                break;
+            case "Rajkot":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942663.cms";
+                break;
+            case "Ranchi":
+                t="https://timesofindia.indiatimes.com/rssfeeds/4118245.cms";
+                break;
+            case "Surat":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942660.cms";
+                break;
+            case "Vadodara":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3942666.cms";
+                break;
+            case "Varanasi":
+                t="https://timesofindia.indiatimes.com/rssfeeds/3947071.cms";
+                break;
+            case "Thiruvananthapuram":
+                t="https://timesofindia.indiatimes.com/rssfeeds/878156304.cms";
+                break;
+        }
         new ProcessInBackground().execute();
     }
-
     public InputStream getinputstream(URL url){
         try{
             return url.openConnection().getInputStream();
@@ -79,7 +184,14 @@ public class SettingsFragment extends Fragment {
             return null;
         }
     }
-   public class ProcessInBackground extends AsyncTask<Integer,Integer, Exception> {
+
+    /*@Override
+    public void onResume() {
+        super.onResume();
+        new ProcessInBackground().execute();
+    }*/
+
+    public class ProcessInBackground extends AsyncTask<Integer,Integer, Exception> {
 
         ProgressDialog progressDialog=new ProgressDialog(getActivity());
         Exception exception;
@@ -94,25 +206,6 @@ public class SettingsFragment extends Fragment {
         @Override
         protected Exception doInBackground(Integer... params) {
             try{
-                SharedPreferences pref = PreferenceManager
-                        .getDefaultSharedPreferences(getActivity());
-                String state = pref.getString("list_preference", "");
-
-                URL url;
-                String t;
-                if(state=="Mumbai"){
-                    t="https://timesofindia.indiatimes.com/rssfeeds/-2128838597.cms";
-                }
-                else if(state=="Delhi"){
-                    t="https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms";
-                }
-                else if(state=="Bangalore"){
-                    t="https://timesofindia.indiatimes.com/rssfeeds/-2128833038.cms";
-                }
-                else{
-                    t="https://timesofindia.indiatimes.com/rssfeeds/-2128816011.cms";
-                }
-                //Toast.makeText(getActivity(), "THE VALUE IS "+state, Toast.LENGTH_SHORT).show();
                 url=new URL(t);
                 XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);

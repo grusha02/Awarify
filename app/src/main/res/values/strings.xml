@@ -5,14 +5,80 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_timesmix">Timesmix</string>
+    <string name="list_key">list pref</string>
+    <string name="Delhi">Delhi</string>
+    <string name="Mumbai">Mumbai</string>
+    <string name="Bangalore">Bangalore</string>
+    <string name="Hyderabad">Hyderabad</string>
+    <string name="Chennai">Chennai</string>
+    <string name="Ahemdabad">Ahemdabad</string>
+    <string name="Allahabad">Allahabad</string>
+    <string name="Bhubaneswar">Bhubaneswar</string>
+    <string name="Coimbatore">Coimbatore</string>
+    <string name="Gurgaon">Gurgaon</string>
+    <string name="Guwahati">Guwahati</string>
+    <string name="Hubli">Hubli</string>
+    <string name="Kanpur">Kanpur</string>
+    <string name="Kolkata">Kolkata</string>
+    <string name="Ludhiana">Ludhiana</string>
+    <string name="Mangalore">Mangalore</string>
+    <string name="Mysore">Mysore</string>
+    <string name="Noida">Noida</string>
+    <string name="Pune">Pune</string>
+    <string name="Goa">Goa</string>
+    <string name="Chandigarh">Chandigarh</string>
+    <string name="Lucknow">Lucknow</string>
+    <string name="Patna">Patna</string>
+    <string name="Jaipur">Jaipur</string>
+    <string name="Nagpur">Nagpur</string>
+    <string name="Rajkot">Rajkot</string>
+    <string name="Ranchi">Ranchi</string>
+    <string name="Surat">Surat</string>
+    <string name="Vadodara">Vadodara</string>
+    <string name="Varanasi">Varanasi</string>
+    <string name="Thiruvananthapuram">Thiruvananthapuram</string>
 
     <string name="action_settings">Settings</string>
 
     <string-array name="lists">
-        <item>Delhi</item>
-        <item>Mumbai</item>
-        <item>Bangalore</item>
-        <item>Hyderabad</item>
+        <item>@string/Delhi</item>
+        <item>@string/Mumbai</item>
+        <item>@string/Bangalore</item>
+        <item>@string/Hyderabad</item>
+        <item>@string/Chennai</item>
+        <item>@string/Ahemdabad</item>
+        <item>@string/Allahabad</item>
+        <item>@string/Bhubaneswar</item>
+        <item>@string/Coimbatore</item>
+        <item>@string/Gurgaon</item>
+        <item>@string/Guwahati</item>
+        <item>@string/Hubli</item>
+        <item>@string/Kanpur</item>
+        <item>@string/Kolkata</item>
+        <item>@string/Ludhiana</item>
+        <item>@string/Mangalore</item>
+        <item>@string/Mysore</item>
+        <item>@string/Noida</item>
+        <item>@string/Pune</item>
+        <item>@string/Goa</item>
+        <item>@string/Chandigarh</item>
+        <item>@string/Lucknow</item>
+        <item>@string/Patna</item>
+        <item>@string/Jaipur</item>
+        <item>@string/Nagpur</item>
+        <item>@string/Rajkot</item>
+        <item>@string/Ranchi</item>
+        <item>@string/Surat</item>
+        <item>@string/Vadodara</item>
+        <item>@string/Varanasi</item>
+        <item>@string/Thiruvananthapuram</item>
+        
+    </string-array>
+    <string-array name="list_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
 </resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bussh"
+        android:title="Bussiness"
+        />
+
+    <item
+        android:id="@+id/worldh"
+        android:title="World"
+        />
+    <item
+        android:id="@+id/educationh"
+        android:title="Education"
+        />
+    <item
+        android:id="@+id/indiah"
+        android:title="India"
+        />
+    <item
+        android:id="@+id/sportsh"
+        android:title="Sports"
+        />
+    <item
+        android:id="@+id/entertainmenth"
+        android:title="Entertainment"
+        />
+    <item
+        android:id="@+id/healthh"
+        android:title="Health"
+        />
+
+</menu>

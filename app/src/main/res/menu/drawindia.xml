@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nation"
+        android:title="Nation"
+        />
+
+    <item
+        android:id="@+id/worldi"
+        android:title="World"
+        />
+    <item
+        android:id="@+id/sportsi"
+        android:title="Sports"
+        />
+    <item
+        android:id="@+id/healthi"
+        android:title="Health"
+        />
+</menu>
