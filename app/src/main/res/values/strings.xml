@@ -8,8 +8,7 @@
     <string name="list_key">list pref</string>
     <string name="Delhi">Delhi</string>
     <string name="Mumbai">Mumbai</string>
-    <string name="Bangalore">Bangalore</string>
-    <string name="Hyderabad">Hyderabad</string>
+    <string name="Dehradun">Dehradun</string>
     <string name="Chennai">Chennai</string>
     <string name="Ahemdabad">Ahemdabad</string>
     <string name="Allahabad">Allahabad</string>
@@ -43,8 +42,7 @@
     <string-array name="lists">
         <item>@string/Delhi</item>
         <item>@string/Mumbai</item>
-        <item>@string/Bangalore</item>
-        <item>@string/Hyderabad</item>
+        <item>@string/Dehradun</item>
         <item>@string/Chennai</item>
         <item>@string/Ahemdabad</item>
         <item>@string/Allahabad</item>

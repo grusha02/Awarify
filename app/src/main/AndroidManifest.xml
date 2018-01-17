@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.grusha.aawify">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -50,7 +51,10 @@
         <activity android:name=".Settings" />
         <activity android:name=".Hindustanmix" />
         <activity android:name=".Indiamix" />
-        <activity android:name=".Timesbuss"></activity>
+        <activity android:name=".Timesbuss"/>
+        <receiver android:name=".AlarmReceiver"/>
+        <service android:name=".NewUpdates"
+            android:exported="false"/>
     </application>
 
 </manifest>

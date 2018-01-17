@@ -78,25 +78,15 @@ public class SettingsFragment extends Fragment {
         state = pref.getString(getString(R.string.list_key),getString(R.string.Delhi));
         switch (state){
             case "Mumbai":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128838597.cms";
+                t="http://www.hindustantimes.com/rss/cities/mumbai/rssfeed.xml";
                 break;
 
             case "Delhi":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms";
+                t="http://www.hindustantimes.com/rss/cities/delhi/rssfeed.xml";
                 break;
 
-            case "Bangalore":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128833038.cms";
-                break;
-            case "Hyderabad":
-                Toast.makeText(getActivity(), state,Toast.LENGTH_SHORT).show();
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128816011.cms";
-                break;
-            case "Chennai":
-                t="https://timesofindia.indiatimes.com/rssfeeds/2950623.cms";
-                break;
-            case "Ahemdabad":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128821153.cms";
+            case "Dehradun":
+                t="http://www.hindustantimes.com/rss/cities/dehradun/rssfeed.xml";
                 break;
             case "Allahabad":
                 t="https://timesofindia.indiatimes.com/rssfeeds/3947060.cms";
@@ -108,7 +98,7 @@ public class SettingsFragment extends Fragment {
                 t="https://timesofindia.indiatimes.com/rssfeeds/7503091.cms";
                 break;
             case "Gurgaon":
-                t="https://timesofindia.indiatimes.com/rssfeeds/6547154.cms";
+                t="http://www.hindustantimes.com/rss/cities/gurgaon/rssfeed.xml";
                 break;
             case "Guwahati":
                 t="https://timesofindia.indiatimes.com/rssfeeds/4118215.cms";
@@ -120,7 +110,7 @@ public class SettingsFragment extends Fragment {
                 t="https://timesofindia.indiatimes.com/rssfeeds/3947067.cms";
                 break;
             case "Kolkata":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128830821.cms";
+                t="http://www.hindustantimes.com/rss/cities/kolkata/rssfeed.xml";
                 break;
             case "Ludhiana":
                 t="https://timesofindia.indiatimes.com/rssfeeds/3947051.cms";
@@ -132,7 +122,7 @@ public class SettingsFragment extends Fragment {
                 t="https://timesofindia.indiatimes.com/rssfeeds/3942693.cms";
                 break;
             case "Noida":
-                t="https://timesofindia.indiatimes.com/rssfeeds/8021716.cms";
+                t="http://www.hindustantimes.com/rss/cities/noida/rssfeed.xml";
                 break;
             case "Pune":
                 t="https://timesofindia.indiatimes.com/rssfeeds/-2128821991.cms";
@@ -141,10 +131,10 @@ public class SettingsFragment extends Fragment {
                 t="https://timesofindia.indiatimes.com/rssfeeds/3012535.cms";
                 break;
             case "Chandigarh":
-                t="https://timesofindia.indiatimes.com/rssfeeds/-2128816762.cms";
+                t="http://www.hindustantimes.com/rss/cities/chandigarh/rssfeed.xml";
                 break;
             case "Lucknow":
-                t="https://timesofindia.indiatimes.com/rss.cms";
+                t="http://www.hindustantimes.com/rss/cities/lucknow/rssfeed.xml";
                 break;
             case "Patna":
                 t="https://timesofindia.indiatimes.com/rssfeeds/-2128817995.cms";
