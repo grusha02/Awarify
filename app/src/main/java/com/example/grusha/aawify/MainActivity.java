@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         long interval=1000;
         long curr=System.currentTimeMillis();
 
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, curr, AlarmManager.INTERVAL_HOUR, pendingintent);
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, curr, interval, pendingintent);
     }
     public void movetopaper(View view){
         ConnectivityManager c=(ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -218,10 +218,7 @@ public class NewUpdates extends IntentService {
         catch (IOException e){
             exception=e;
         }
-        SharedPreferences shared=getSharedPreferences("timeinfo", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit=shared.edit();
-        edit.putInt("time",1);
-        edit.apply();
+
 
         StringBuilder sb=new StringBuilder();
         for(Names s:titles1){
@@ -229,14 +226,18 @@ public class NewUpdates extends IntentService {
             sb.append("\n");
         }
         h=sb.toString();
-        if(titles1.size()>0){
+        if(titles1.size()>-1){
             Intent in=new Intent(this,papernameActivity.class);
             PendingIntent pend=PendingIntent.getActivity(this,0,in,0);
         NotificationCompat.Builder n=new NotificationCompat.Builder(this).setContentTitle(state).setContentText(h).setSmallIcon(R.mipmap.ic_launcher).setStyle(new NotificationCompat.BigTextStyle().bigText(h));
         n.setContentIntent(pend);
             NotificationManager notificationManager =
                 (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(0,n.build());}}
+        notificationManager.notify(0,n.build());}
+        SharedPreferences shared=getSharedPreferences("timeinfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit=shared.edit();
+        edit.putInt("time",1);
+        edit.apply();}
 
     public InputStream getinputstream(URL url){
         try{
