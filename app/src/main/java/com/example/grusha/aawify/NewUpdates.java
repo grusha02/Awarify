@@ -2,14 +2,13 @@ package com.example.grusha.aawify;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
-import android.app.ProgressDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +40,9 @@ public class NewUpdates extends IntentService {
     String f;
     String j;
     Date time1;
+    InputStream input;
+    int i=0;
+
     public NewUpdates(){
         super("NewUpdates");
     }
@@ -54,7 +55,8 @@ public class NewUpdates extends IntentService {
         SimpleDateFormat sim=new SimpleDateFormat("dd MMM yyyy");
         SimpleDateFormat sim1=new SimpleDateFormat("HH:mm:ss");
         sim1.setTimeZone(TimeZone.getTimeZone("GMT"));
-        cal.add(Calendar.HOUR,-1);
+        SharedPreferences share=getSharedPreferences("timeinfo", Context.MODE_PRIVATE);
+        cal.add(Calendar.HOUR,-share.getInt("time",1));
         String time=sim1.format(cal.getTime());
         String date=sim.format(cal.getTime());
         SharedPreferences pref = PreferenceManager
@@ -153,7 +155,15 @@ public class NewUpdates extends IntentService {
             XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(false);
             XmlPullParser xpp=factory.newPullParser();
-            xpp.setInput(getinputstream(url),"UTF_8");
+            input=getinputstream(url);
+            if(input==null){
+                SharedPreferences shared=getSharedPreferences("timeinfo", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit=shared.edit();
+                edit.putInt("time",shared.getInt("time",0)+1);
+                edit.apply();
+                return;
+            }
+            xpp.setInput(input,"UTF_8");
             boolean insideitem=false;
             int event=xpp.getEventType();
             while(event!=XmlPullParser.END_DOCUMENT){
@@ -164,6 +174,7 @@ public class NewUpdates extends IntentService {
                     if(xpp.getName().equalsIgnoreCase("title")){
                         if(insideitem){
                             f=xpp.nextText();
+
                         }
                     }
                     if(xpp.getName().equalsIgnoreCase("pubDate")){
@@ -175,7 +186,7 @@ public class NewUpdates extends IntentService {
                                 j=match.group(1);
                             }
                             try{
-                            if (xpp.nextText().contains(date)&&sim1.parse(j).after(sim1.parse(time))){
+                            if (l.contains(date)&&sim1.parse(j).after(sim1.parse(time))){
                                 Names d=new Names(f);
                                 titles1.add(d);}}
 
@@ -184,7 +195,7 @@ public class NewUpdates extends IntentService {
 
                             }
 
-                        }
+                        }}
                     else if(xpp.getName().equalsIgnoreCase("link")){
                         if(insideitem){
                             Names g=new Names(xpp.nextText());
@@ -197,7 +208,7 @@ public class NewUpdates extends IntentService {
                 }
                 event=xpp.next();
             }
-        }}
+        }
         catch (MalformedURLException e){
             exception=e;
         }
@@ -207,23 +218,32 @@ public class NewUpdates extends IntentService {
         catch (IOException e){
             exception=e;
         }
+        SharedPreferences shared=getSharedPreferences("timeinfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit=shared.edit();
+        edit.putInt("time",1);
+        edit.apply();
+
         StringBuilder sb=new StringBuilder();
         for(Names s:titles1){
             sb.append(s.getname());
             sb.append("\n");
         }
         h=sb.toString();
-
-        NotificationCompat.Builder n=new NotificationCompat.Builder(this).setContentTitle("Notification").setContentText(h).setSmallIcon(R.mipmap.ic_launcher).setStyle(new NotificationCompat.BigTextStyle().bigText(h));
-        NotificationManager notificationManager =
+        if(titles1.size()>0){
+            Intent in=new Intent(this,papernameActivity.class);
+            PendingIntent pend=PendingIntent.getActivity(this,0,in,0);
+        NotificationCompat.Builder n=new NotificationCompat.Builder(this).setContentTitle(state).setContentText(h).setSmallIcon(R.mipmap.ic_launcher).setStyle(new NotificationCompat.BigTextStyle().bigText(h));
+        n.setContentIntent(pend);
+            NotificationManager notificationManager =
                 (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(0,n.build());}
+        notificationManager.notify(0,n.build());}}
 
     public InputStream getinputstream(URL url){
         try{
             return url.openConnection().getInputStream();
         }
         catch (IOException e){
+
             return null;
         }
     }
