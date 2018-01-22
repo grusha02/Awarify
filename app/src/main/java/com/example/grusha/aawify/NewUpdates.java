@@ -226,7 +226,7 @@ public class NewUpdates extends IntentService {
             sb.append("\n");
         }
         h=sb.toString();
-        if(titles1.size()>-1){
+        if(titles1.size()>0){
             Intent in=new Intent(this,papernameActivity.class);
             PendingIntent pend=PendingIntent.getActivity(this,0,in,0);
         NotificationCompat.Builder n=new NotificationCompat.Builder(this).setContentTitle(state).setContentText(h).setSmallIcon(R.mipmap.ic_launcher).setStyle(new NotificationCompat.BigTextStyle().bigText(h));
